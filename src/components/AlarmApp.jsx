@@ -7,10 +7,17 @@ import { AlarmFormOpenButton } from './Components';
 
 import AlarmForm from './AlarmForm';
 import AlarmFeed from './AlarmFeed';
-import ExampleAlarms from '../ExampleAlarmData';
+import ExampleAlarms from '../exampleAlarmData';
 import CurrentTime from './CurrentTime';
+import AlanBtn from './AlanBtn';
+
+
+
+
 
 export default class AlarmApp extends Component {
+
+  
   state = {
     version: 0.1,
     currentTime: moment(),
@@ -69,6 +76,7 @@ export default class AlarmApp extends Component {
   };
 
   createAlarm = (attrs) => {
+    console.log(attrs);
     const newAlarms = this.state.alarms
       .concat(createNewAlarm(attrs))
       .sort((a, b) => b.dateCreated - a.dateCreated);
@@ -79,6 +87,13 @@ export default class AlarmApp extends Component {
 
     localStorage.setItem('alarms', this.alarmsToJson(newAlarms));
   };
+
+  createNewAlanAlarms = (input)=>{
+    console.log(input);
+    var time = new moment(input);
+    const alarmattr ={ "title":"", "note":"", "time":time, "isActive":true, "tone":"beep"}
+    this.createAlarm(alarmattr);
+  }
 
   handleAlarmDelete = (alarmId) => {
     const filteredAlarms = this.state.alarms.filter(a => a.id !== alarmId);
@@ -123,6 +138,7 @@ export default class AlarmApp extends Component {
             onDeleteAlarm={this.handleAlarmDelete}
           />
         </Container>
+        <AlanBtn hi={this.createNewAlanAlarms}/>
         <div id="bottom">
           <AlarmFormOpenButton onClick={this.toggleAlarmFormVisibility} />
         </div>

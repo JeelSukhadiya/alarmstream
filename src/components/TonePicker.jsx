@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Icon, Menu } from 'semantic-ui-react';
-import AlarmTones from '../AlarmTones';
+import AlarmTones from '../alarmTones';
 
 export default class TonePicker extends Component {
   handleSelect = (e, { name }) => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Segment, Icon, Button, Transition } from 'semantic-ui-react';
 import Sound from 'react-sound';
-import AlarmTones from '../AlarmTones';
+import AlarmTones from '../alarmTones';
 
 export default class Ringer extends Component {
   state={
